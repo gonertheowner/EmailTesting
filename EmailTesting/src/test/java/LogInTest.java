@@ -27,11 +27,14 @@ public class LogInTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         //получение ссылки на страницу из файла настроек
-        driver.get(ConfProperties.getProperty("page"));
+        driver.get(ConfProperties.getProperty("login-page"));
     }
 
     @Test
     public void logInTest() {
-        loginPage.inputEmail(ConfProperties.getProperty("email1"));
+        loginPage.inputEmail(ConfProperties.getProperty("email2"));
+        loginPage.clickLogInButton();
+        loginPage.inputPassword(ConfProperties.getProperty("password"));
+        loginPage.clickLogInButton();
     }
 }
