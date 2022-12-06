@@ -1,13 +1,16 @@
+import com.sun.tools.javac.Main;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LogInPage;
+import pages.MainPage;
 
 import java.util.concurrent.TimeUnit;
 public class LogInTest {
     public static LogInPage loginPage;
+    public static MainPage mainPage;
     public static WebDriver driver;
 
     @BeforeClass
@@ -19,6 +22,8 @@ public class LogInTest {
         driver = new ChromeDriver();
 
         loginPage = new LogInPage(driver);
+
+        mainPage = new MainPage(driver);
 
         //окно разворачивается на полный экран
         driver.manage().window().maximize();
@@ -36,5 +41,6 @@ public class LogInTest {
         loginPage.clickLogInButton();
         loginPage.inputPassword(ConfProperties.getProperty("password"));
         loginPage.clickLogInButton();
+        Assert.assertEquals(mainPage.getUserName(), ConfProperties.getProperty("username2"));
     }
 }
