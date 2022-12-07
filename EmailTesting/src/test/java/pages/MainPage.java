@@ -15,7 +15,14 @@ public class MainPage {
     @FindBy(xpath = "//span[@class='user-account__name']")
     private WebElement userName;
 
+    @FindBy(xpath = "//a[@class='Button2 Button2_type_link Button2_view_action Button2_size_m Layout-m__compose--pTDsx qa-LeftColumn-ComposeButton ComposeButton-m__root--fP-o9']")
+    private WebElement writeButton;
+
     public String getUserName() {
         return userName.getText();
+    }
+
+    public void clickWriteButton() {
+        writeButton.click();
     }
 }
