@@ -36,11 +36,27 @@ public class LogInTest {
     }
 
     @Test
-    public void logInTest() {
+    public void CorrectLogInTest() {
         loginPage.inputEmail(ConfProperties.getProperty("email2"));
         loginPage.clickLogInButton();
         loginPage.inputPassword(ConfProperties.getProperty("password"));
         loginPage.clickLogInButton();
         Assert.assertEquals(mainPage.getUserName(), ConfProperties.getProperty("username2"));
+    }
+
+    @Test
+    public void NotCorrectLoginTest() {
+        loginPage.inputEmail("notcorrectemail");
+        loginPage.clickLogInButton();
+        Assert.assertEquals("Такого аккаунта нет", loginPage.getErrorLoginText());
+    }
+
+    @Test
+    public void NotCorrectPasswordTest() {
+        loginPage.inputEmail(ConfProperties.getProperty("email2"));
+        loginPage.clickLogInButton();
+        loginPage.inputPassword("notcorrectpassword");
+        loginPage.clickLogInButton();
+        Assert.assertEquals("Неверный пароль", loginPage.getErrorPasswordText());
     }
 }

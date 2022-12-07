@@ -21,6 +21,13 @@ public class LogInPage {
     @FindBy(xpath = "//input[@id='passp-field-passwd']")
     private WebElement passwordField;
 
+    @FindBy(xpath = "//div[@id='field:input-login:hint']")
+    private WebElement errorLoginText;
+
+
+    @FindBy(xpath = "//div[@id='field:input-passwd:hint']")
+    private WebElement errorPasswordText;
+
     public void inputEmail(String email) {
         emailField.sendKeys(email);
     }
@@ -31,5 +38,13 @@ public class LogInPage {
 
     public void inputPassword(String password) {
         passwordField.sendKeys(password);
+    }
+
+    public String getErrorLoginText() {
+        return errorLoginText.getText();
+    }
+
+    public String getErrorPasswordText() {
+        return errorPasswordText.getText();
     }
 }
