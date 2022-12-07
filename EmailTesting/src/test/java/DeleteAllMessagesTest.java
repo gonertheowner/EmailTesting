@@ -3,19 +3,16 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.SentMessagesPage;
 import pages.LogInPage;
 import pages.MainPage;
-import pages.SentMessagesPage;
-import pages.WriteMessagePage;
 
 import java.util.concurrent.TimeUnit;
 
-public class SendMessageTest {
+public class DeleteAllMessagesTest {
 
     public static LogInPage loginPage;
     public static MainPage mainPage;
-    public static WriteMessagePage writeMessagePage;
-
     public static SentMessagesPage sentMessagesPage;
     public static WebDriver driver;
 
@@ -33,8 +30,6 @@ public class SendMessageTest {
 
         sentMessagesPage = new SentMessagesPage(driver);
 
-        writeMessagePage = new WriteMessagePage(driver);
-
         //окно разворачивается на полный экран
         driver.manage().window().maximize();
 
@@ -51,14 +46,10 @@ public class SendMessageTest {
     }
 
     @Test
-    public void sendMessageTest() {
-        mainPage.clickWriteButton();
-        writeMessagePage.inputReceiverEmail(ConfProperties.getProperty("email1"));
-        writeMessagePage.inputSubject("subject");
-        writeMessagePage.inputText("text");
-        writeMessagePage.clickSend();
-        //здесь нужно подождать
+    public void deleteAllMessagesTest() {
         mainPage.clickSentButton();
-        Assert.assertEquals(sentMessagesPage.getSentMessage(), "subject");
+        sentMessagesPage.chooseAllMessagesButtonClick();
+        sentMessagesPage.deleteButtonClick();
+        Assert.assertEquals(sentMessagesPage.getErrorText(), "В папке «Отправленные» нет писем");
     }
 }

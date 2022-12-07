@@ -21,10 +21,6 @@ public class MainPage {
     @FindBy(xpath = "//a[@aria-label='Отправленные, папка']")
     private WebElement sentButton;
 
-    //span[@title='subject']
-    @FindBy(xpath = "//span[@title='subject']")
-    private WebElement sentMessage;
-
 
     public String getUserName() {
         return userName.getText();
@@ -38,7 +34,4 @@ public class MainPage {
         sentButton.click();
     }
 
-    public String getSentMessage() {
-        return sentMessage.getText();
-    }
 }
