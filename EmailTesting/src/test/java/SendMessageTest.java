@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,6 @@ public class SendMessageTest {
 
     public static LogInPage loginPage;
     public static MainPage mainPage;
-
     public static WriteMessagePage writeMessagePage;
     public static WebDriver driver;
 
@@ -52,5 +52,7 @@ public class SendMessageTest {
         writeMessagePage.inputSubject("subject");
         writeMessagePage.inputText("text");
         writeMessagePage.clickSend();
+        mainPage.clickSentButton();
+        Assert.assertEquals(mainPage.getSentMessage(), "subject");
     }
 }
