@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SentMessagesPage {
-
     public WebDriver driver;
     public SentMessagesPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -22,7 +21,7 @@ public class SentMessagesPage {
     @FindBy(xpath = "//h1[@class='Text Text_weight_bold Text_typography_subheader-l messages-empty__header--2ws56']")
     private WebElement errorText;
 
-    @FindBy(xpath = "//span[@title='subject']")
+    @FindBy(xpath = "//span[@title='just title']")
     private WebElement sentMessage;
 
     public void chooseAllMessagesButtonClick() {

@@ -15,12 +15,19 @@ public class MainPage {
     @FindBy(xpath = "//span[@class='user-account__name']")
     private WebElement userName;
 
+    @FindBy(xpath = "//span[@title='just title']")
+    private WebElement receivedMessageTitle;
+
     @FindBy(xpath = "//a[@class='Button2 Button2_type_link Button2_view_action Button2_size_m Layout-m__compose--pTDsx qa-LeftColumn-ComposeButton ComposeButton-m__root--fP-o9']")
     private WebElement writeButton;
 
     @FindBy(xpath = "//a[@aria-label='Отправленные, папка']")
     private WebElement sentButton;
 
+    public String getReceivedMessageTitle()
+    {
+        return receivedMessageTitle.getText();
+    }
 
     public String getUserName() {
         return userName.getText();

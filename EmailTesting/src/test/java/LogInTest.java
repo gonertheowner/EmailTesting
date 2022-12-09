@@ -1,9 +1,9 @@
-import com.sun.tools.javac.Main;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.ConfProperties;
 import pages.LogInPage;
 import pages.MainPage;
 
@@ -46,7 +46,7 @@ public class LogInTest {
 
     @Test
     public void NotCorrectLoginTest() {
-        loginPage.inputEmail("notcorrectemail");
+        loginPage.inputEmail("not correct email");
         loginPage.clickLogInButton();
         Assert.assertEquals("Такого аккаунта нет", loginPage.getErrorLoginText());
     }
@@ -55,7 +55,7 @@ public class LogInTest {
     public void NotCorrectPasswordTest() {
         loginPage.inputEmail(ConfProperties.getProperty("email2"));
         loginPage.clickLogInButton();
-        loginPage.inputPassword("notcorrectpassword");
+        loginPage.inputPassword("not correct password");
         loginPage.clickLogInButton();
         Assert.assertEquals("Неверный пароль", loginPage.getErrorPasswordText());
     }
